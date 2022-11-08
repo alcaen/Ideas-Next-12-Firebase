@@ -9,7 +9,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'upload.wikimedia.org',
-        port: '',
+        // port: '',
         pathname: '/**',
       },
       // 'https://seeklogo.com/images/N/next-js-logo-8FCFF51DD2-seeklogo.com.png'
@@ -17,7 +17,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'seeklogo.com',
-        port: '',
+        // port: '',
         pathname: '/**',
       },
       // https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2048px-Tailwind_CSS_Logo.svg.png
@@ -25,7 +25,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'upload.wikimedia.org',
-        port: '',
+        // port: '',
         pathname: '/**',
       },
       // https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-goog/events/firebase_xwsV0rV.png
@@ -33,7 +33,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
-        port: '',
+        // port: '',
         pathname: '/**',
       },
       // https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png
@@ -41,7 +41,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'upload.wikimedia.org',
-        port: '',
+        // port: '',
         pathname: '/**',
       },
       // https://supereasy.club/wp-content/uploads/2022/04/orig.png
@@ -49,7 +49,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'supereasy.club',
-        port: '',
+        // port: '',
         pathname: '/**',
       },
       // https://avatars.githubusercontent.com/u/64233636?v=4
@@ -57,7 +57,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'avatars.githubusercontent.com',
-        port: '',
+        // port: '',
         pathname: '/**',
       },
       // https://cdn.pixabay.com/photo/2018/03/14/13/21/statue-3225208_960_720.png
@@ -65,7 +65,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cdn.pixabay.com',
-        port: '',
+        // port: '',
         pathname: '/**',
       },
     ],

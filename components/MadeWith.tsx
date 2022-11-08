@@ -62,14 +62,14 @@ const importedTools = {
 };
 const MadeWith: React.FC<Props> = (props) => {
   return (
-    <div className='flex justify-evenly max-w-md m-auto flex-wrap space-x-4'>
+    <div className='flex justify-evenly max-w-lg m-auto flex-wrap'>
       {props.tools.map((tool) => {
         const currentTool = importedTools[tool as keyof typeof importedTools];
         return (
           <Tooltip text={currentTool.name}>
             <div
               key={currentTool.name}
-              className='mb-5'
+              className='mb-5 mx-4'
             >
               {/* <div>{currentTool.name}</div> */}
               <Link

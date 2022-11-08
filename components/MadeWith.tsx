@@ -69,7 +69,7 @@ const MadeWith: React.FC<Props> = (props) => {
           <Tooltip text={currentTool.name}>
             <div
               key={currentTool.name}
-              className='mb-5 mx-4'
+              className=' mb-2 mx-4'
             >
               {/* <div>{currentTool.name}</div> */}
               <Link

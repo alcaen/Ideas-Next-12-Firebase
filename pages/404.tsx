@@ -1,7 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const NotFound: React.FC = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    setTimeout(() => {
+      router.push('/');
+    }, 5000);
+  }, []);
+
   return (
     <div className='my-auto flex flex-col justify-center items-center content-center min-h-screen -mt-20 space-y-4'>
       <Image

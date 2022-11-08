@@ -66,11 +66,11 @@ const MadeWith: React.FC<Props> = (props) => {
       {props.tools.map((tool) => {
         const currentTool = importedTools[tool as keyof typeof importedTools];
         return (
-          <Tooltip text={currentTool.name}>
-            <div
-              key={currentTool.name}
-              className=' mb-2 mx-4'
-            >
+          <Tooltip
+            text={currentTool.name}
+            key={currentTool.name}
+          >
+            <div className=' mb-2 mx-4'>
               {/* <div>{currentTool.name}</div> */}
               <Link
                 href={currentTool.link}

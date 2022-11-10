@@ -54,6 +54,13 @@ const AllIdeas: React.FC<Props> = ({ users }) => {
       <div className='mx-7 my-5'>
         <h1 className='text-3xl font-semibold'>All Ideas</h1>
         <div className='flex justify-evenly flex-wrap w-4/5 m-auto'>
+          <Link
+            href={'/ideas/create'}
+            className='bg-green-600 w-[250px] h-[150px] flex-col my-8 p-4 rounded-3xl drop-shadow-lg text-white font-semibold hover:bg-green-500 hover:-translate-y-5 hover:-translate-x-5 transition space-y-3 cursor-pointer'
+          >
+            <p className='text-lg'>Add new idea</p>
+            <p className='text-lg'>{'+'}</p>
+          </Link>
           {users.map((user: User) => {
             return (
               <Link

@@ -10,7 +10,7 @@ const Home: React.FC = () => {
       </Head>
       <div>
         <div className='mx-7 my-5 flex flex-col items-center space-y-7 mb-10'>
-          <h1 className='text-3xl font-semibold'>Alcaen Ideas</h1>
+          <h1 className='text-3xl font-semibold'>Idea Tracker</h1>
           <p className='text-lg'>
             I made this website to keep track of my new project ideas as well
             the current state of them. If you want to see more projects go to my{' '}

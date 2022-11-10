@@ -1,8 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserContext } from '../lib/context';
+import LogInWithGoogle from './LogInWithGoogle';
 
 const Navbar: React.FC = () => {
+  const { user } = useContext(UserContext);
+
   const [loginSlide, setLoginSlide] = useState(false);
 
   const slider = () => {
@@ -15,7 +19,11 @@ const Navbar: React.FC = () => {
         <div className='flex-1 flex items-center'>
           <Image
             className='rounded-full cursor-pointer '
-            src='https://avatars.githubusercontent.com/u/64233636?v=4'
+            src={
+              user
+                ? user.photoURL
+                : 'https://cdn.pixabay.com/photo/2017/02/23/13/05/avatar-2092113_960_720.png'
+            }
             alt='Alcaen'
             width={45}
             height={45}
@@ -29,7 +37,7 @@ const Navbar: React.FC = () => {
               loginSlide && setLoginSlide(false);
             }}
             href='/'
-            className='cursor-pointer py-4 px-4 hover:bg-gray-500 hover:bg-opacity-10 rounded-2xl transition ease-in-out delay-150 duration-500'
+            className='cursor-pointer py-4 px-4 hover:bg-gray-500 hover:bg-opacity-10 rounded-2xl transition ease-in-out duration-500'
           >
             Home
           </Link>
@@ -39,28 +47,26 @@ const Navbar: React.FC = () => {
               loginSlide && setLoginSlide(false);
             }}
             href='/ideas'
-            className='cursor-pointer py-4 px-4 hover:bg-gray-500 hover:bg-opacity-10 rounded-2xl transition ease-in-out delay-150 duration-500'
+            className='cursor-pointer py-4 px-4 hover:bg-gray-500 hover:bg-opacity-10 rounded-2xl transition ease-in-out duration-500'
           >
             All Ideas
           </Link>
         </div>
       </div>
+
+      {/* Login Form */}
       <div
         className={`${
           loginSlide ? 'translate-x-0' : '-translate-x-full'
         } absolute duration-500 bg-gray-300 w-[200px] h-[100px] flex flex-col space-y-1 justify-evenly z-10 mt-[2px] rounded-br-lg `}
       >
-        <Link
-          href='enter'
-          className='text-black bg-white mx-3 py-1 rounded-md text-center'
-        >
-          Login
-        </Link>
+        <LogInWithGoogle />
+
         <div className='self-center text-black'>
           <p className='text-xs'>Don't have an account yet?</p>
           <Link
             className='text-xs block text-center text-blue-800 font-medium hover:underline'
-            href='/enter'
+            href='/'
           >
             Sing Up
           </Link>

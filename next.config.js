@@ -68,6 +68,22 @@ const nextConfig = {
         // port: '',
         pathname: '/**',
       },
+      // https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png
+      // Google Logo
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+        // port: '',
+        pathname: '/**',
+      },
+      // https://lh3.googleusercontent.com/a/ALm5wu0yi4xjOJAMcKyDPsLHrO6nwkZLEq0K8V5W8d3rnw=s96-c
+      // Google Profile Photo
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        // port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

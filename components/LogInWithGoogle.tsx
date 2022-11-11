@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { auth, googleAuthProvider } from '../lib/firebase';
 import { useContext } from 'react';
 import { UserContext } from '../lib/context';
+import { useRouter } from 'next/router';
 
 const LogInWithGoogle = () => {
   const { user } = useContext(UserContext);
@@ -10,12 +11,7 @@ const LogInWithGoogle = () => {
   // 2. user sing in but missed username <UsernameForm/>
   // 3. user sing in, with username <SingOutButton/>
 
-  return (
-    <>
-      {/* text-black bg-white mx-3 rounded-md text-center cursor-pointer w-5/6 hover:bg-cyan-600/40 duration-500 py-1 */}
-      {user ? <SingOutButton /> : <SingInButton />}
-    </>
-  );
+  return user ? <SingOutButton /> : <SingInButton />;
 };
 
 function SingInButton() {
@@ -41,10 +37,18 @@ function SingInButton() {
 }
 
 function SingOutButton() {
+  // When sign out redirect to home to avoid errors
+  const router = useRouter();
+
+  const handleSignOut = () => {
+    auth.signOut();
+    router.push('/');
+  };
+
   return (
     <div
       className='text-black bg-white mx-3 rounded-md text-center cursor-pointer w-5/6 hover:bg-red-500/50 duration-500 py-1 font-semibold '
-      onClick={() => auth.signOut()}
+      onClick={handleSignOut}
     >
       <Image
         src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png'

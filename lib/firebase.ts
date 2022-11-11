@@ -33,3 +33,24 @@ export const emailAuthProvider = new firebase.auth.EmailAuthProvider();
 
 export const firestore = firebase.firestore();
 export const storage = firebase.storage();
+
+// Helper Functions
+
+export async function getUserWithUserUid(
+  userUid: string | undefined | string[]
+) {
+  const usersRef = firestore.collection('users');
+  const query = usersRef.where('uid', '==', userUid).limit(1);
+  const userDoc = (await query.get()).docs[0];
+  return userDoc;
+}
+
+export function postToJSON(doc: any) {
+  const data = doc.data();
+  return {
+    ...data,
+    // When added createdAt or updatedAt you have to add
+    // createdAt: data.createdAt.toMillis(),
+    // updatedAt: data.createdAt.toMillis(),
+  };
+}

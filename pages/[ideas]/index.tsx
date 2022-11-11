@@ -1,51 +1,50 @@
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import { getUserWithUserUid, postToJSON, auth } from '../../lib/firebase';
 
 // User Interface
 // to add an array of users we use User[]
 export interface User {
-  id: number;
+  uid: string;
   name: string;
-  username: string;
-  email: string;
-  address: Address;
-  phone: string;
-  website: string;
-  company: Company;
+  ideas: Idea[];
 }
-export interface Address {
-  street: string;
-  suite: string;
-  city: string;
-  zipcode: string;
-  geo: Geo;
-}
-export interface Geo {
-  lat: string;
-  lng: string;
-}
-export interface Company {
-  name: string;
-  catchPhrase: string;
-  bs: string;
+
+export interface Idea {
+  description: string;
+  title: string;
 }
 
 export interface Props {
-  users: User[];
+  user: User;
+  ideas: Idea[];
 }
 
-export const getStaticProps = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users');
-  const data: User[] = await res.json();
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const userUid = query.ideas;
+  const userDoc = await getUserWithUserUid(userUid);
+
+  let user = null;
+  let ideas = null;
+
+  if (userDoc) {
+    user = userDoc.data();
+    const ideasQuery = userDoc.ref.collection('ideas');
+    ideas = await (await ideasQuery.get()).docs.map(postToJSON);
+  } else {
+    return { notFound: true };
+  }
 
   return {
     props: {
-      users: data,
+      user,
+      ideas,
     },
   };
 };
 
-const AllIdeas: React.FC<Props> = ({ users }) => {
+const AllIdeas: React.FC<Props> = ({ user, ideas }) => {
   return (
     <>
       <Head>
@@ -61,16 +60,15 @@ const AllIdeas: React.FC<Props> = ({ users }) => {
             <p className='text-lg'>Add new idea</p>
             <p className='text-lg'>{'+'}</p>
           </Link>
-          {users.map((user: User) => {
+          {ideas.map((idea: Idea) => {
             return (
               <Link
-                href={'/ideas/' + String(user.id)}
-                key={user.id}
+                href={`/${user.uid}/${idea.title}`}
+                key={idea.title}
                 className='bg-cyan-600 w-[250px] h-[150px] flex-col my-8 p-4 rounded-3xl drop-shadow-lg text-white font-semibold hover:bg-cyan-500 hover:-translate-y-5 hover:-translate-x-5 transition space-y-3 cursor-pointer'
               >
-                <p className='text-lg'>{user.name}</p>
-                <p>{user.email}</p>
-                <p>{user.phone}</p>
+                <p className='text-lg'>{idea.title}</p>
+                <p>{idea.description}</p>
               </Link>
             );
           })}

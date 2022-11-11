@@ -1,17 +1,24 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../lib/context';
 import LogInWithGoogle from './LogInWithGoogle';
 
 const Navbar: React.FC = () => {
+  // Use user context to have the global user
   const { user } = useContext(UserContext);
 
   const [loginSlide, setLoginSlide] = useState(false);
 
+  // Togle Slide menu
   const slider = () => {
     loginSlide ? setLoginSlide(false) : setLoginSlide(true);
   };
+
+  // Dismis Slide menu if user change
+  useEffect(() => {
+    loginSlide && setLoginSlide(false);
+  }, [user]);
 
   return (
     <nav className='border-y-cyan-600 border-b-2'>
@@ -46,7 +53,7 @@ const Navbar: React.FC = () => {
             onClick={() => {
               loginSlide && setLoginSlide(false);
             }}
-            href='/ideas'
+            href={user ? `/${String(user.uid)}` : '/'}
             className='cursor-pointer py-4 px-4 hover:bg-gray-500 hover:bg-opacity-10 rounded-2xl transition ease-in-out duration-500'
           >
             All Ideas

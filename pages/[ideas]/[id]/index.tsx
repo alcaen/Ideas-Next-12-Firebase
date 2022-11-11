@@ -37,10 +37,10 @@ export const getStaticProps = async (context: any) => {
 const SpecificId: React.FC<Props> = ({ user }) => {
   return (
     <div className='mx-7 my-5 bg-gray-300 p-5 rounded-3xl'>
-      <h2 className='text-3xl font-semibold mb-4'>{user.name}</h2>
+      {/* <h2 className='text-3xl font-semibold mb-4'>{user.name}</h2>
       <p className='text-xl mb-2'>From: {user.address.city}</p>
       <p className='text-xl mb-2'>Contact: {user.phone}</p>
-      <p className='text-xl mb-2'>Work at: {user.company.name}</p>
+      <p className='text-xl mb-2'>Work at: {user.company.name}</p> */}
     </div>
   );
 };

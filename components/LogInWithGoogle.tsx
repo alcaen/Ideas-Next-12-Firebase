@@ -3,6 +3,7 @@ import { auth, googleAuthProvider } from '../lib/firebase';
 import { useContext } from 'react';
 import { UserContext } from '../lib/context';
 import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
 
 const LogInWithGoogle = () => {
   const { user } = useContext(UserContext);
@@ -16,7 +17,12 @@ const LogInWithGoogle = () => {
 
 function SingInButton() {
   const signInWithGoogle = async () => {
-    await auth.signInWithPopup(googleAuthProvider);
+    await auth
+      .signInWithPopup(googleAuthProvider)
+      // put pop up telling the user that successfully signed in
+      .then((success: any) => toast.success('Signed In'))
+      // put pop up telling the user that have to sing in
+      .catch((e: any) => toast.error('Pop-Up Closed. Please Sign In'));
   };
   return (
     <div
@@ -42,6 +48,9 @@ function SingOutButton() {
 
   const handleSignOut = () => {
     auth.signOut();
+    toast('See you later!', {
+      icon: '👋',
+    });
     router.push('/');
   };
 

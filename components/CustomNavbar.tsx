@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
             onClick={() => {
               loginSlide && setLoginSlide(false);
             }}
-            href={user ? `/${String(user.uid)}` : '/'}
+            href={'/ideas'}
             className='cursor-pointer py-4 px-4 hover:bg-gray-500 hover:bg-opacity-10 rounded-2xl transition ease-in-out duration-500'
           >
             All Ideas

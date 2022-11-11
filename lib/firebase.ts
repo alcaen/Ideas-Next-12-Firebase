@@ -32,6 +32,8 @@ export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 export const emailAuthProvider = new firebase.auth.EmailAuthProvider();
 
 export const firestore = firebase.firestore();
+export const fromMillis = firebase.firestore.Timestamp.fromMillis;
+export const serverTimestamp = firebase.firestore.FieldValue.serverTimestamp;
 export const storage = firebase.storage();
 
 // Helper Functions

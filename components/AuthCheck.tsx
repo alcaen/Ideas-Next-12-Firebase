@@ -22,8 +22,8 @@ const AuthCheck = (props: any) => {
           <Image
             src='https://cdn.pixabay.com/photo/2013/07/12/13/25/hera-146990_960_720.png'
             alt='Auth Error'
-            width={130}
-            height={130}
+            width={120}
+            height={120}
           />
           <h1 className='text-3xl font-bold'>Oooops...</h1>
           <h2 className='text-2xl'> You must be singed in.</h2>

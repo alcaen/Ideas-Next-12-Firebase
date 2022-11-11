@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
   }, [user]);
 
   return (
-    <nav className='border-y-cyan-600 border-b-2'>
+    <nav className='border-y-cyan-600 border-b-2 bg-cyan-600/10'>
       <div className='flex justify-between mx-5  font-medium items-center py-1'>
         <div className='flex-1 flex items-center'>
           <Image

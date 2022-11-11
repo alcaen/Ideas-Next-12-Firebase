@@ -6,33 +6,33 @@ export interface Props {
 }
 
 // Config to the generated static paths in this example are ten of them so if we try to get some that doesnt exist like 11 it will trow 404
-export const getStaticPaths = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users');
-  const data: User[] = await res.json();
+// export const getStaticPaths = async () => {
+//   const res = await fetch('https://jsonplaceholder.typicode.com/users');
+//   const data: User[] = await res.json();
 
-  const paths = data.map((user: any) => {
-    return {
-      params: { id: user.id.toString() },
-    };
-  });
+//   const paths = data.map((user: any) => {
+//     return {
+//       params: { id: user.id.toString() },
+//     };
+//   });
 
-  return {
-    paths,
-    fallback: false,
-  };
-};
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
 
-// Get the props of each user
-export const getStaticProps = async (context: any) => {
-  const id = await context.params.id.toString();
-  const res = await fetch('https://jsonplaceholder.typicode.com/users/' + id);
-  const data: User = await res.json();
-  return {
-    props: {
-      user: data,
-    },
-  };
-};
+// // Get the props of each user
+// export const getStaticProps = async (context: any) => {
+//   const id = await context.params.id.toString();
+//   const res = await fetch('https://jsonplaceholder.typicode.com/users/' + id);
+//   const data: User = await res.json();
+//   return {
+//     props: {
+//       user: data,
+//     },
+//   };
+// };
 
 const SpecificId: React.FC<Props> = ({ user }) => {
   return (

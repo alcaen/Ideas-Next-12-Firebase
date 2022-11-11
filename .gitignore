@@ -38,3 +38,5 @@ next-env.d.ts
 # firebase
 .firebase
 .next
+# To add auto deploy but for some reason dont work i will work on it later
+.github

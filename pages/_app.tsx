@@ -5,7 +5,6 @@ import { Analytics } from '@vercel/analytics/react';
 import { UserContext } from '../lib/context';
 import { useUserData } from '../lib/hooks';
 import { Toaster } from 'react-hot-toast';
-// import { Toaster } from 'react-hot-toast';
 
 export default function App({ Component, pageProps }: AppProps) {
   const userData = useUserData();

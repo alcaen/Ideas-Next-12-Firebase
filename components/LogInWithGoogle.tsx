@@ -1,9 +1,10 @@
 import Image from 'next/image';
-import { auth, googleAuthProvider } from '../lib/firebase';
+import { auth, firestore, googleAuthProvider } from '../lib/firebase';
 import { useContext } from 'react';
 import { UserContext } from '../lib/context';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
+import { serverTimestamp } from 'firebase/firestore';
 
 const LogInWithGoogle = () => {
   const { user } = useContext(UserContext);
@@ -17,10 +18,34 @@ const LogInWithGoogle = () => {
 
 function SingInButton() {
   const signInWithGoogle = async () => {
+    const createUser = async () => {
+      const uid = auth.currentUser.uid;
+
+      const ref = firestore.collection('users').doc(uid);
+
+      const data = {
+        uid,
+        email: auth.currentUser.email,
+        emailVerified: auth.currentUser.emailVerified,
+        name: auth.currentUser.displayName,
+        phoneNumber: auth.currentUser.phoneNumber,
+        photoUrl: auth.currentUser.photoURL,
+        metaData: { ...auth.currentUser.metadata },
+        updatedAt: serverTimestamp(),
+      };
+
+      await ref.set(data);
+
+      // toast.success('User Created');
+    };
     await auth
       .signInWithPopup(googleAuthProvider)
       // put pop up telling the user that successfully signed in
-      .then((success: any) => toast.success('Signed In'))
+      .then((success: any) => {
+        toast.success('Signed In');
+        createUser();
+        // console.log(auth.currentUser);
+      })
       // put pop up telling the user that have to sing in
       .catch((e: any) => toast.error('Pop-Up Closed. Please Sign In'));
   };

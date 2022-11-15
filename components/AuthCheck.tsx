@@ -4,18 +4,25 @@ import Router from 'next/router';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../lib/context';
 
-const AuthCheck = (props: any) => {
+const AuthCheck = (props: {
+  children: any;
+  redirect?: true | boolean;
+  fallback?: any;
+}) => {
   const { user } = useContext(UserContext);
   const router = Router;
 
   if (user) {
     return props.children;
   } else {
-    useEffect(() => {
-      setTimeout(() => {
-        router.push('/');
-      }, 5000);
-    }, []);
+    // useEffect(() => {
+    //   if (props.redirect == true) {
+    //     setTimeout(() => {
+    //       router.push('/');
+    //     }, 5000);
+    //   }
+    // }, []);
+
     return (
       props.fallback || (
         <div className='my-auto flex flex-col justify-center items-center min-h-screen -mt-20 space-y-5'>

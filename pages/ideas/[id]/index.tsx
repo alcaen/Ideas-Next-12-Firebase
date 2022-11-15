@@ -1,9 +1,4 @@
-import { User } from '../index';
-
 // Import the User interface from the all ideas path
-export interface Props {
-  user: User;
-}
 
 // Config to the generated static paths in this example are ten of them so if we try to get some that doesnt exist like 11 it will trow 404
 // export const getStaticPaths = async () => {
@@ -34,7 +29,7 @@ export interface Props {
 //   };
 // };
 
-const SpecificId: React.FC<Props> = ({ user }) => {
+const SpecificId: React.FC = () => {
   return (
     <div className='mx-7 my-5 bg-gray-300 p-5 rounded-3xl'>
       {/* <h2 className='text-3xl font-semibold mb-4'>{user.name}</h2>

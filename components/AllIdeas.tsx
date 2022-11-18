@@ -1,20 +1,11 @@
 import { DocumentData } from 'firebase/firestore';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import Idea, { IdeaInterface } from './Idea';
 export interface User {
   uid: string;
   name: string;
-  ideas: Idea[];
-}
-
-export interface Idea {
-  createdAt: string;
-  description: string;
-  slug: string;
-  status: string;
-  title: string;
-  uid: string;
-  updatedAt: string;
+  ideas: IdeaInterface[];
 }
 
 export interface Props {
@@ -22,12 +13,12 @@ export interface Props {
   ideas: DocumentData[];
 }
 
-interface Filter {
+export interface Filter {
   todo: Boolean;
   inprogress: Boolean;
   done: Boolean;
 }
-
+// Use local store is used to save states in cookies
 function useLocalStorage(key: string, initialValue: any) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
@@ -68,6 +59,7 @@ function useLocalStorage(key: string, initialValue: any) {
 }
 
 const AllIdeas: React.FC<Props> = ({ ideas }) => {
+  // Filter State Storaged on local Storage
   const [filter, setFilter] = useLocalStorage('filter', {
     todo: true,
     inprogress: true,
@@ -76,7 +68,8 @@ const AllIdeas: React.FC<Props> = ({ ideas }) => {
   console.log(filter);
   return (
     <div className='mx-4 my-5'>
-      <div className='flex items-center break-keep space-x-4 '>
+      {/* All Ideas Filter */}
+      <div className='flex items-center break-keep space-x-4'>
         <h1 className='text-3xl font-semibold mx-3 inline'>All Ideas</h1>
         <div>
           <input
@@ -127,8 +120,9 @@ const AllIdeas: React.FC<Props> = ({ ideas }) => {
           <label className='font-semibold'>Done</label>
         </div>
       </div>
-
+      {/* Ideas Space */}
       <div className='flex justify-evenly flex-wrap w-full'>
+        {/* Create New Idea */}
         <Link
           href={'/ideas/create'}
           className='bg-cyan-600 w-[160px] h-[150px] flex-col my-8 p-4 rounded-3xl drop-shadow-lg text-white font-semibold hover:bg-cyan-500 hover:-translate-y-5 hover:-translate-x-5 transition  cursor-pointer'
@@ -136,32 +130,13 @@ const AllIdeas: React.FC<Props> = ({ ideas }) => {
           <p className='text-lg block text-center'>Add New</p>
           <p className='text-8xl -mt-3 text-center font-light'>{'+'}</p>
         </Link>
-        {ideas.map((idea: any) => {
-          return (
-            <Link
-              href={`/ideas/${idea.title}`}
-              key={idea.title}
-              className={
-                `min-w-[160px] w-[160px] h-[150px] flex-col my-8 p-4 rounded-3xl drop-shadow-lg text-white font-semibold hover:-translate-y-5 hover:-translate-x-5 transition space-y-3 cursor-pointer ` +
-                (idea.status == 'todo'
-                  ? 'bg-red-600 hover:bg-red-500 ' + (!filter.todo && 'hidden')
-                  : idea.status == 'inprogress'
-                  ? 'bg-yellow-500 hover:bg-yellow-400 ' +
-                    (!filter.inprogress && 'hidden')
-                  : 'bg-green-600 hover:bg-green-500 ' +
-                    (!filter.done && 'hidden'))
-              }
-            >
-              <p className='text-lg truncate'>{idea.title}</p>
-              <p className='text-sm font-light overflow-y-hidden h-2/6'>
-                {idea.description}
-              </p>
-              <p className='text-sm font-normal'>
-                {idea.updatedAt.toDate().toDateString()}
-              </p>
-            </Link>
-          );
-        })}
+        {/* Map All Ideas */}
+        {ideas.map((idea: any) => (
+          <Idea
+            idea={idea}
+            filter={filter}
+          ></Idea>
+        ))}
       </div>
     </div>
   );

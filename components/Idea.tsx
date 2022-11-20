@@ -52,7 +52,8 @@ const Idea = ({ idea, filter }: Props) => {
     await ref.set(data);
 
     toast.success('Status Updated');
-    router.push('/ideas');
+    // router.push('/ideas');
+    setDisplayNote(false);
   };
 
   // Idea Showed
@@ -62,7 +63,11 @@ const Idea = ({ idea, filter }: Props) => {
         className='fixed top-0 h-full w-full bg-gray-400/30 z-10'
         onClick={() => setDisplayNote(false)}
       ></div>
-      <div className={'relative top-[20%] mx-5 z-20 bg-gray-100 rounded-lg'}>
+      <div
+        className={
+          'relative top-[20%] mx-5 z-20 bg-gray-100 rounded-lg shadow-xl shadow-black/50'
+        }
+      >
         <button
           className='absolute top-0 right-0 w-10 h-10 rounded-xl text-center opacity-80'
           onClick={() => setDisplayNote(false)}
@@ -85,6 +90,7 @@ const Idea = ({ idea, filter }: Props) => {
           <p className='mt-5 font-semibold'>Status:</p>
           <div className='flex space-x-3 mt-2'>
             <button
+              disabled={idea.status == 'todo'}
               onClick={() => UpdateStatus(idea, 'todo')}
               className={
                 'w-10 h-10 rounded-xl border-2 border-red-600 duration-200 ' +
@@ -94,6 +100,7 @@ const Idea = ({ idea, filter }: Props) => {
               }
             ></button>
             <button
+              disabled={idea.status == 'inprogress'}
               onClick={() => UpdateStatus(idea, 'inprogress')}
               className={
                 'w-10 h-10 rounded-xl border-2 border-yellow-600 duration-200 ' +
@@ -103,6 +110,7 @@ const Idea = ({ idea, filter }: Props) => {
               }
             ></button>
             <button
+              disabled={idea.status == 'done'}
               onClick={() => UpdateStatus(idea, 'done')}
               className={
                 'w-10 h-10 rounded-xl border-2 border-green-600 duration-200 ' +
@@ -130,7 +138,7 @@ const Idea = ({ idea, filter }: Props) => {
       onClick={() => setDisplayNote(true)}
       key={idea.slug}
       className={
-        `min-w-[160px] w-[160px] h-[150px] flex-col my-8 p-4 rounded-3xl drop-shadow-lg text-white font-semibold hover:-translate-y-5 hover:-translate-x-5 transition space-y-3 cursor-pointer ` +
+        `min-w-[160px] w-[160px] h-[150px] flex-col my-4 p-4 rounded-3xl drop-shadow-lg text-white font-semibold hover:-translate-y-5 hover:-translate-x-5 transition space-y-3 cursor-pointer hover:shadow-lg hover:shadow-black/50 ` +
         (idea.status == 'todo'
           ? 'bg-red-600 hover:bg-red-500 ' + (!filter.todo && 'hidden')
           : idea.status == 'inprogress'

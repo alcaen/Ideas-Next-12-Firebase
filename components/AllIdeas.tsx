@@ -125,7 +125,7 @@ const AllIdeas: React.FC<Props> = ({ ideas }) => {
         {/* Create New Idea */}
         <Link
           href={'/ideas/create'}
-          className='bg-cyan-600 w-[160px] h-[150px] flex-col my-8 p-4 rounded-3xl drop-shadow-lg text-white font-semibold hover:bg-cyan-500 hover:-translate-y-5 hover:-translate-x-5 transition  cursor-pointer'
+          className='bg-cyan-600 w-[160px] h-[150px] flex-col my-4 p-4 rounded-3xl drop-shadow-lg text-white font-semibold hover:bg-cyan-500 hover:-translate-y-5 hover:-translate-x-5 transition  cursor-pointer hover:shadow-lg hover:shadow-black/50'
         >
           <p className='text-lg block text-center'>Add New</p>
           <p className='text-8xl -mt-3 text-center font-light'>{'+'}</p>

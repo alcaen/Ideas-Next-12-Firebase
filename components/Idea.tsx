@@ -40,19 +40,13 @@ const Idea = ({ idea, filter }: Props) => {
       .doc(idea.slug);
 
     const data = {
-      createdAt: idea.createdAt,
-      description: idea.description,
-      slug: idea.slug,
       status: Newstatus,
-      title: idea.title,
-      uid: idea.uid,
       updatedAt: serverTimestamp(),
     };
 
-    await ref.set(data);
+    await ref.update(data);
 
     toast.success('Status Updated');
-    // router.push('/ideas');
     setDisplayNote(false);
   };
 
@@ -120,13 +114,15 @@ const Idea = ({ idea, filter }: Props) => {
               }
             ></button>
             <div className='flex-1 flex justify-end'>
-              <button
-                className={
-                  'w-10 h-10 rounded-xl border-2 border-gray-600 bg-gray-600/30 hover:bg-gray-600/20 duration-200'
-                }
-              >
-                ✏️
-              </button>
+              <Link href={`/ideas/${idea.slug}`}>
+                <button
+                  className={
+                    'w-10 h-10 rounded-xl border-2 border-gray-600 bg-gray-600/30 hover:bg-gray-600/20 duration-200'
+                  }
+                >
+                  ✏️
+                </button>
+              </Link>
             </div>
           </div>
         </div>

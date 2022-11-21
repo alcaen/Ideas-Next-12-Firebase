@@ -2,6 +2,7 @@ import { DocumentData } from 'firebase/firestore';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import Idea, { IdeaInterface } from './Idea';
+
 export interface User {
   uid: string;
   name: string;
@@ -65,7 +66,7 @@ const AllIdeas: React.FC<Props> = ({ ideas }) => {
     inprogress: true,
     done: true,
   });
-  console.log(filter);
+  // console.log(filter);
   return (
     <div className='mx-4 my-5'>
       {/* All Ideas Filter */}
@@ -135,6 +136,7 @@ const AllIdeas: React.FC<Props> = ({ ideas }) => {
           <Idea
             idea={idea}
             filter={filter}
+            key={idea.slug}
           ></Idea>
         ))}
       </div>

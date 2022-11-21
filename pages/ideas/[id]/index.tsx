@@ -1,42 +1,40 @@
-// Import the User interface from the all ideas path
+import { useRouter } from 'next/router';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import AuthCheck from '../../../components/AuthCheck';
+import LoadingWheel from '../../../components/LoadingWheel';
+import { auth, firestore } from '../../../lib/firebase';
+import CustomForm from '../../../components/CustomForm';
 
-// Config to the generated static paths in this example are ten of them so if we try to get some that doesnt exist like 11 it will trow 404
-// export const getStaticPaths = async () => {
-//   const res = await fetch('https://jsonplaceholder.typicode.com/users');
-//   const data: User[] = await res.json();
+function GetCurrentIdea() {
+  const router = useRouter();
+  const { id } = router.query;
+  const slug: any = id;
+  const ref = firestore
+    .collection('users')
+    .doc(auth.currentUser.uid)
+    .collection('ideas')
+    .doc(slug);
 
-//   const paths = data.map((user: any) => {
-//     return {
-//       params: { id: user.id.toString() },
-//     };
-//   });
+  const query: any = ref;
 
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// };
-
-// // Get the props of each user
-// export const getStaticProps = async (context: any) => {
-//   const id = await context.params.id.toString();
-//   const res = await fetch('https://jsonplaceholder.typicode.com/users/' + id);
-//   const data: User = await res.json();
-//   return {
-//     props: {
-//       user: data,
-//     },
-//   };
-// };
+  const [document] = useDocumentData(query);
+  const idea: any = document;
+  return idea ? (
+    <div>
+      <CustomForm currentIdea={idea} />
+    </div>
+  ) : (
+    <div className='my-auto flex flex-col justify-center items-center  min-h-screen -mt-20 '>
+      <LoadingWheel show={true} />
+    </div>
+  );
+}
 
 const SpecificId: React.FC = () => {
   return (
-    <div className='mx-7 my-5 bg-gray-300 p-5 rounded-3xl'>
-      {/* <h2 className='text-3xl font-semibold mb-4'>{user.name}</h2>
-      <p className='text-xl mb-2'>From: {user.address.city}</p>
-      <p className='text-xl mb-2'>Contact: {user.phone}</p>
-      <p className='text-xl mb-2'>Work at: {user.company.name}</p> */}
-    </div>
+    <AuthCheck>
+      <GetCurrentIdea />
+    </AuthCheck>
   );
 };
 

@@ -10,6 +10,7 @@ import AuthCheck from '../../../components/AuthCheck';
 import { serverTimestamp } from 'firebase/firestore';
 import toast from 'react-hot-toast';
 import { timeLog } from 'console';
+import Link from 'next/link';
 
 const Create = () => {
   const router = useRouter();
@@ -60,12 +61,21 @@ const Create = () => {
           className='flex flex-col justify-center items-center space-y-8 min-h-[600px]'
         >
           <div>
-            <input
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder={'Title'}
-              className='bg-gray-500/10 rounded-md p-4 font-semibold text-center block'
-            />
+            <div className='block'>
+              <input
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder={'Title'}
+                className='bg-gray-500/10 rounded-md p-4 font-semibold text-center w-[200px]'
+              />
+              <Link
+                className='py-[15.5px] px-[10px] ml-2 rounded-lg font-semibold enabled:hover:opacity-80 duration-300 text-white border-2 border-red-600 hover:bg-red-600/30'
+                href='/ideas'
+              >
+                ❌
+              </Link>
+            </div>
+
             <p className='text-xs text-left mt-1 ml-2 text-gray-500'>{slug}</p>
           </div>
 

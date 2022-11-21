@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import { auth, firestore } from '../lib/firebase';
 import { Filter } from './AllIdeas';
 import LoadingWheel from './LoadingWheel';
+import ReactMarkdown from 'react-markdown';
 
 type timeStamp = {
   seconds: number;
@@ -59,7 +60,7 @@ const Idea = ({ idea, filter }: Props) => {
       ></div>
       <div
         className={
-          'relative top-[20%] mx-5 z-20 bg-gray-100 rounded-lg shadow-xl shadow-black/50'
+          'relative top-[10%] mx-5 z-20 bg-gray-100 rounded-lg shadow-xl shadow-black/50'
         }
       >
         <button
@@ -70,7 +71,7 @@ const Idea = ({ idea, filter }: Props) => {
         </button>
         <div className='p-5'>
           <p className='font-semibold text-xl'>{idea.title}</p>
-          <p>{idea.description}</p>
+          <ReactMarkdown>{idea.description}</ReactMarkdown>
           <p className='mt-1 font-semibold'>Created at:</p>
           <p>{idea.createdAt.toDate().toDateString()}</p>
           <p className='mt-1 font-semibold'>Updated at:</p>

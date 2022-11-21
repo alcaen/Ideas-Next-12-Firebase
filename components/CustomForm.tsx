@@ -82,7 +82,7 @@ const CustomForm = ({ currentIdea }: Props) => {
                 className='bg-gray-500/10 rounded-md p-4 font-semibold text-center w-[200px]'
               />
               <Link
-                className='py-[14px] px-[10px] ml-2 rounded-lg font-semibold enabled:hover:opacity-80 duration-300 text-white border-2 border-red-600 hover:bg-red-600/30'
+                className='py-[15.5px] px-[10px] ml-2 rounded-lg font-semibold enabled:hover:opacity-80 duration-300 text-white border-2 border-red-600 hover:bg-red-600/30'
                 href='/ideas'
               >
                 ❌
@@ -136,18 +136,18 @@ const CustomForm = ({ currentIdea }: Props) => {
           </div>
           <div>
             <button
-              className='bg-green-700 py-2 px-14 rounded-lg font-semibold enabled:hover:opacity-80 duration-300 text-white disabled:bg-red-700 mx-3'
-              type='submit'
-              disabled={!isValid}
-            >
-              Save
-            </button>
-            <button
               className='bg-red-700 py-2 px-14 rounded-lg font-semibold enabled:hover:opacity-80 duration-300 text-white mx-3'
               type='button'
               onClick={() => deleteIdea()}
             >
               Delete
+            </button>
+            <button
+              className='bg-green-700 py-2 px-14 rounded-lg font-semibold enabled:hover:opacity-80 duration-300 text-white disabled:bg-red-700 mx-3'
+              type='submit'
+              disabled={!isValid}
+            >
+              Save
             </button>
           </div>
         </form>

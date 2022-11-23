@@ -4,15 +4,6 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
 import 'firebase/compat/analytics';
 
-// const firebaseConfig = {
-//   apiKey: 'AIzaSyCvxvhrXq_xqJtFuBZPCWvS-WcR6x_y3Zo',
-//   authDomain: 'ideas-alcaen.firebaseapp.com',
-//   projectId: 'ideas-alcaen',
-//   storageBucket: 'ideas-alcaen.appspot.com',
-//   messagingSenderId: '78978469071',
-//   appId: '1:78978469071:web:cd19b7fd4c1d618eb0fbba',
-//   measurementId: 'G-ZZ3CC641T6',
-// };
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,

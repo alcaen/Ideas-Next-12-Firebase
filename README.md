@@ -30,6 +30,8 @@ Well... I forgot the good ideas that I had while taking a shower every single ti
 - [x] Shadows
 - [x] Handle Bugs
 - [x] Delete Notes
+- [ ] Upgrade Firebase Analythics
+- [ ] Updgrade SEO, Metatags
 
 ## Tools that I'll use:
 

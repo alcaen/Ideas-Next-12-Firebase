@@ -4,6 +4,7 @@ import AuthCheck from '../../../components/AuthCheck';
 import LoadingWheel from '../../../components/LoadingWheel';
 import { auth, firestore } from '../../../lib/firebase';
 import CustomForm from '../../../components/CustomForm';
+import Head from 'next/head';
 
 function GetCurrentIdea() {
   const router = useRouter();
@@ -33,6 +34,9 @@ function GetCurrentIdea() {
 const SpecificId: React.FC = () => {
   return (
     <AuthCheck>
+      <Head>
+        <title>Edit Idea</title>
+      </Head>
       <GetCurrentIdea />
     </AuthCheck>
   );

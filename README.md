@@ -1,34 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Idea Management Project
 
-## Getting Started
+Why I create this project ?
 
-First, run the development server:
+Well... I forgot the good ideas that I had while taking a shower every single time. In this way I keep them in a database as well the status, description and last time I update that idea. I can use this webapp in my phone and see what I wrote in my pc later.
 
-```bash
-npm run dev
-# or
-yarn dev
+[Github Repo](https://github.com/alcaen/Ideas-Next-12-Firebase)
+
+[Live Version](https://ideas-alcaen.web.app/)
+
+## Important Dates
+
+- First to do list made on: 10/19/2022
+- Final Version 1.0 Deploy on Firebase : 11/23/2022
+
+## What I need to acomplish:
+
+- [x] Landing Page with info about the project
+- [x] User Auth
+- [x] Create Collections [User collection, Ideas Collection]
+- [x] Host On Firebase
+- [x] Firebase Analythics
+- [x] Firebase Security
+- [x] All ideas page
+- [x] Edit on click component for each idea
+- [x] Update Dates
+- [x] Add On click changing status
+- [x] Edit / Create New idea
+- [x] Animations
+- [x] Shadows
+- [x] Handle Bugs
+- [x] Delete Notes
+
+## Tools that I'll use:
+
+- [x] Next Js
+- [x] Typescript
+- [x] Firestore
+- [x] Firebase Auth
+- [x] Firebase Host
+- [x] Firebase Analytics
+- [x] Tailwind
+- [x] HeroIcons
+- [x] Toast
+
+---
+
+[x] Means added or already implemented.
+
+[-] Means ongoing.
+
+[ ] Means To do.
+
+---
+
+## To Deploy on firebase
+
+```powershell
+npm i
+
+firebase experiments:enable webframeworks
+firebase init hosting
+# Select Next and deselect github actions cause i don't wanna use auto daploys from repo
+
+firebase deploy
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

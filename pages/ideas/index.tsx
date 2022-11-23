@@ -39,6 +39,9 @@ const AllIdeasPage: React.FC = () => {
 
   return (
     <AuthCheck>
+      <Head>
+        <title>All Ideas</title>
+      </Head>
       {!ideas ? (
         <div className='my-auto flex flex-col justify-center items-center  min-h-screen -mt-20 '>
           <LoadingWheel show={true} />

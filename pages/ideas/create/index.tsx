@@ -11,6 +11,7 @@ import { serverTimestamp } from 'firebase/firestore';
 import toast from 'react-hot-toast';
 import { timeLog } from 'console';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const Create = () => {
   const router = useRouter();
@@ -55,6 +56,9 @@ const Create = () => {
   };
   return (
     <AuthCheck>
+      <Head>
+        <title>Create New Idea</title>
+      </Head>
       <div>
         <form
           onSubmit={createIdea}

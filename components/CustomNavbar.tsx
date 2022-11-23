@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../lib/context';
-import LogInWithGoogle from './LogInWithGoogle';
+import LogInWithGoogle, { SingInButton } from './LogInWithGoogle';
 
 const Navbar: React.FC = () => {
   // Use user context to have the global user
@@ -67,17 +67,15 @@ const Navbar: React.FC = () => {
           loginSlide ? 'translate-x-0' : '-translate-x-full'
         } absolute duration-500 bg-gray-300 w-[200px] h-[100px] flex flex-col space-y-1 justify-evenly z-10 mt-[2px] rounded-br-lg `}
       >
-        <LogInWithGoogle />
-
-        <div className='self-center text-black'>
-          <p className='text-xs'>Don't have an account yet?</p>
-          <Link
-            className='text-xs block text-center text-blue-800 font-medium hover:underline'
-            href='/'
-          >
-            Sing Up
-          </Link>
+        <div className='self-center text-black w-[180px]'>
+          <p className='font-medium'>
+            {user ? 'Logged as:' : 'Please Sign-In'}
+          </p>
+          <p className='text-xs overflow-hidden truncate'>
+            {user ? user.email : null}
+          </p>
         </div>
+        <LogInWithGoogle />
       </div>
     </nav>
   );

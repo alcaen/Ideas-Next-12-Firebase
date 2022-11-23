@@ -33,7 +33,10 @@ const Home: React.FC = () => {
               className='font-semibold hover:underline'
             >
               LinkedIn.
-            </Link>
+            </Link>{' '}
+            To Sign In click or tap the rounded incognito image on the top-left
+            corner of the page. Once you're signed in you can freely use this
+            idea manager or task tracker.
           </p>
 
           <Link
@@ -46,14 +49,7 @@ const Home: React.FC = () => {
           <p className='text-xl font-semibold'>Made With :</p>
         </div>
         <MadeWith
-          tools={[
-            'typescript',
-            'next',
-            'tailwind',
-            'firebase',
-            'react',
-            'vercel',
-          ]}
+          tools={['typescript', 'next', 'tailwind', 'firebase', 'react']}
         />
       </div>
     </>

@@ -2,6 +2,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
+import 'firebase/compat/analytics';
 
 // const firebaseConfig = {
 //   apiKey: 'AIzaSyCvxvhrXq_xqJtFuBZPCWvS-WcR6x_y3Zo',
@@ -29,12 +30,14 @@ if (!firebase.apps.length) {
 export const auth: any = firebase.auth();
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export const emailAuthProvider = new firebase.auth.EmailAuthProvider();
+// export const emailAuthProvider = new firebase.auth.EmailAuthProvider();
 
 export const firestore = firebase.firestore();
 export const fromMillis = firebase.firestore.Timestamp.fromMillis;
 export const serverTimestamp = firebase.firestore.FieldValue.serverTimestamp;
 export const storage = firebase.storage();
+export const analytics =
+  typeof window !== 'undefined' ? firebase.analytics() : null;
 
 // Helper Functions
 

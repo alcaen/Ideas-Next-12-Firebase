@@ -16,7 +16,7 @@ const LogInWithGoogle = () => {
   return user ? <SingOutButton /> : <SingInButton />;
 };
 
-function SingInButton() {
+export function SingInButton() {
   const signInWithGoogle = async () => {
     const createUser = async () => {
       const uid = auth.currentUser.uid;

@@ -40,3 +40,6 @@ next-env.d.ts
 .next
 # To add auto deploy but for some reason dont work i will work on it later
 .github
+firestore.rules
+firebase.json
+.firebaserc
